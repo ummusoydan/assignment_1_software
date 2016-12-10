@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+
+</head>
+<body>
+<center><h1>Register</h1></center>
+<hr />
+
+    <a href="/"><center>Home</center></a></br></br>
+
+    {{ note }}
+
+<form method="POST">
+    {% csrf_token %}<center>
+    Username<br> <input name="username"><br>
+    Password<br> <input type="password" name="password"><br>
+    <button type="submit">Submit</button></center>
+</form>
+
+
+</body>
+</html>

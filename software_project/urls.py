@@ -20,4 +20,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^todo/', include("todo.urls")),
     url(r'^blog/', include("blog.urls")),
+    url(r'^users/', include("users.urls")),
+    url(r'^$', include("tadaima.urls")),
 ]
