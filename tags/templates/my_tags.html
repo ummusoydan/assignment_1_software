@@ -2,21 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Todos</title>
+    <title>Title</title>
 </head>
 <body>
 
+
 {% if request.user.username %}
-    <center><h1>Welcome {{ request.user.username }}</h1></center>
-    <hr />
+    <h1>Welcome {{ request.user.username }}</h1>
     <a href="/users/logout">Logout</a>
 {% endif %}
 
 <ol>
-    {% for todo in todos %}
+    {% for tag in tags %}
         <li>
-            <h1>{{ todo.name }}</h1>
-            <p>{{ todo.description }}</p>
+            <h1>{{ tag.name }}</h1>
         </li>
     {% endfor %}
 </ol>
@@ -24,11 +23,11 @@
 
 <form method="POST">
     {% csrf_token %}
-    <input name="todo_name">
-    <input name="description_name">
+    <input name="tag_name">
 
     <button type="submit">Submit</button>
 </form>
+
 
 
 </body>

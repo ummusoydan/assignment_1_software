@@ -21,5 +21,7 @@ urlpatterns = [
     url(r'^todo/', include("todo.urls")),
     url(r'^blog/', include("blog.urls")),
     url(r'^users/', include("users.urls")),
+    url(r'^tags/', include("tags.urls")),
     url(r'^$', include("tadaima.urls")),
+    url(r'^accounts/', include("blog.urls")),
 ]
