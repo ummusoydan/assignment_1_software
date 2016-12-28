@@ -5,13 +5,51 @@
     <title>Blog Entries</title>
 </head>
 <body>
-    <h2> Blog entry titles</h2>
-    <br >
-        {% for entry, content in all_entries %}
-            <h3>{{ entry }}</h3>
-            <p>{{ content }}</p>
+
+<div>
+    {% if request.user.username %}
+    <h1>Welcome {{ request.user.username }}</h1>
+    <a href="/users/logout">Logout</a>
+
+    {% endif %}
+    <a href="/">Home Page</a><br>
+    <br>
+    <br type="1">
+        {% for entry in entries %}
+                <h2>{{ entry.title }}</h2>
+                <p>{{ entry.description }}</p>
+                {% for tag in entry.tags.all %}
+                    {{ tag.name }}
+                {% endfor  %}
         {% endfor %}
-    </br>
+    <br>
+</div>
+<hr />
+<center>
+<a href="/blog/entries/deleteall">Delete all</a>
+
+
+<div>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="name">Title:</label>
+        <input id="name" type="text" name="name" maxlength="220"><br>
+        <br>
+        <label for="description">Description:</label>
+        <input id="description" type="text" name="description" maxlength="520"><br>
+        <br>
+        <label for="tags">Select some tags:</label>
+        <select id="tags" name="tags" multiple>
+            {% for tag in tags %}
+                <option value="{{ tag.id }}" >{{ tag.name }}</option>
+            {% endfor %}
+        </select><br>
+        <br>
+        <button type="submit">Submit</button>
+    </form><br>
+
+    <br><br>
+</div></center>
+
 </body>
 </html>
-

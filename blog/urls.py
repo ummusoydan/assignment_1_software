@@ -1,10 +1,10 @@
 from django.conf.urls import url
-
-from .views import show_entries, show_one_entry
-
+from .views import *
 
 urlpatterns = [
-    url(r'^entries/$', show_entries),
-    url(r'^entries/(?P<element_id>[0-9]+$)', show_one_entry),
-    url(r'^$', show_entries),
+    url(r'^entries/delete', delete_all),
+    url(r'^entries/(?P<item_id>[0-9]+)', list_one),
+    url(r'^entries/$', list_all),
+    url(r'^profile', redirect),
+    url(r'^$', index),
 ]
