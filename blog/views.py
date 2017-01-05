@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import *
 from .models import *
 from .forms import BlogForm
-from django.core.exceptions import PermissionDenied
+from django.contrib.auth.decorators import permission_required
 
 
 def index(request):
@@ -42,3 +42,10 @@ def redirect(request):
 def delete_all(request):
     Blog.objects.filter(user=request.user.id).delete()
     return HttpResponse(r'<meta http-equiv="refresh" content="0; url=http://127.0.0.1:8000/blog/entries/" />')
+
+@permission_required('is_superuser')
+def show_all(request):
+    return render(request, "blog.html", {"entries": Blog.objects.all()})
+@permission_required('is_superuser')
+def show_all_user(request, userId):
+    return render(request, "blog.html", {"entries": Blog.objects.filter(owner=userId)})

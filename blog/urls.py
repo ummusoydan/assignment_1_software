@@ -7,4 +7,6 @@ urlpatterns = [
     url(r'^entries/$', list_all),
     url(r'^profile', redirect),
     url(r'^$', index),
+    url(r'^entries/all/$', show_all),
+    url(r'^entries/all/user/(?P<userId>[0-9]+)$', show_all_user),
 ]
